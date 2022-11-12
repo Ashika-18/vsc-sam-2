@@ -35,11 +35,13 @@ class PostController extends Controller
     }
 
     public function show(Post $post) {
-        
+        $post = Post::findOrFail($Id);
+        return view('posts.show', compact('post'));
     }
 
-    public function edit(Post $post) {
-        
+    public function edit($id) {
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
     public function update(Request $request, Post $post) {
