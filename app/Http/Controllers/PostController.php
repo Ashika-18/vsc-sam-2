@@ -44,11 +44,26 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, Post $post) {
-        
+    public function update(Request $request, $id) {
+        $request->validate([
+            'name'    => 'required',
+            'title'   => 'required',
+            'content' => 'required',
+        ]);
+
+        $post = Post::where('id', $id)->firstOrFail();
+        $post->name     = $request->input('name');
+        $post->title    = $request->input('title');
+        $post->content  = $request->input('content');
+        $post->save();
+
+        return redirect()->route('posts.show', ['id'  => $post->id])->with('message', '更新しました！');
     }
 
-    public function destroy(Post $post) {
-        
+    public function destroy($id) {
+        $post = Post::where('id', $id)->firstOrFail();
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }
