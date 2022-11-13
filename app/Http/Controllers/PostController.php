@@ -10,7 +10,7 @@ class PostController extends Controller
     
     public function index() {
         $posts = Post::all();
-
+        $posts = Post::all()->sortByDesc('created_at');
         return view('posts.index', compact('posts'));
     }
 
@@ -34,8 +34,8 @@ class PostController extends Controller
         return redirect()->route('posts.show', ['id' => $post->id])->with('message', '登録しました！');
     }
 
-    public function show(Post $post) {
-        $post = Post::findOrFail($Id);
+    public function show(Post $post, $id) {
+        $post = Post::findOrFail($id);
         return view('posts.show', compact('post'));
     }
 

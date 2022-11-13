@@ -2,13 +2,13 @@
 
 @if ($errors->any())
     <ul>
-        @foreach
+        @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
 @endif
 
-<form action="{{ url('/posts', $post->id) }}">
+<form method="POST" action="{{ url('/posts', $post->id) }}">
     @csrf
     @method('put')
     <input type="text" name="name" value="{{ old('name') == '' ? $post->name : old('name') }}">
