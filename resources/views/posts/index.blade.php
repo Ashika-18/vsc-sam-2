@@ -16,15 +16,15 @@
     <main id="content">
         @foreach($posts as $post)
         <div class="post">
-            <p>{{ $post->name }}</p>
+            <p class="name">{{ $post->name }}</p>
             <p class="title"><a href="{{ url('/posts', $post->id) }}">{{ $post->title }}</a>
-            <p>{{ $post->content }}</p>
-            <a href="{{ url('/posts', [$post->id, 'edit']) }}">更新</a></p>
+            <p class="content">{{ $post->content }}</p>
+            <a class="edit" href="{{ url('/posts', [$post->id, 'edit']) }}">更新</a></p>
         </div>
             <form action="{{ url('/posts', $post->id) }}" method="POST" onsubmit="if(confirm('削除しても良いですか？')) {return true} else {return false};">
                 @method('delete')
                 @csrf
-                <button type="submit">削除</button>
+                <button class="btn-d" type="submit">削除</button>
             </form>
         @endforeach
     </main>
