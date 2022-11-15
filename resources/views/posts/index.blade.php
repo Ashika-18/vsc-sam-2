@@ -29,4 +29,8 @@
         @endforeach
     </main>
 </body>
+
+<footer>
+    <p>©Ashika-Work</p>
+</footer>
 </html>
