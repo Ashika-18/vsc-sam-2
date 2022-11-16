@@ -10,7 +10,7 @@
     <title>–掲示板–</title>
 </head>
 <h1>Create</h1>
-
+<p id="c-top" class="c-top" ><a href="{{ url('/posts') }}">TOPへ</a></p>
 @if ($errors->any())
     <ul>
         @foreach ($errors->all() as $error)

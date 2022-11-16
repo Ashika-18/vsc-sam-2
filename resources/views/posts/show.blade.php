@@ -10,17 +10,16 @@
     <title>–掲示板–</title>
 </head>
 <h1>Show</h1>
-
+<p class="s-top"><a href="{{ url('/posts') }}">TOPへ</a></p>
 @if (session('message'))
     <p>{{ session('message') }}</p>
 @endif
-
-<p>{{ $post->name }}<br>
-{{ $post->title }}<br>
-{{ $post->content }}</p>
-
-<p><a href="{{ url('/posts', [$post->id, 'edit']) }}">Edit</a></p>
-<p><a href="{{ url('/posts') }}">TOPへ</a></p>
+<div class="s-content">
+    <p class="s-cnt">{{ $post->name }}</p>
+    <p class="s-cnt">{{ $post->title }}</p>
+    <p class="s-cnt">{{ $post->content }}</p>
+</div>
+<p class="s-edit"><a href="{{ url('/posts', [$post->id, 'edit']) }}">更新</a></p>
 
 <footer>
     <p>©Ashika-Work</p>
